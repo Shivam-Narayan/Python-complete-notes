@@ -123,16 +123,13 @@ Python comes with several built-in functions that are always available. Some com
 
 Assigning another name to a function is called **function aliasing**. This allows you to use different names for the same function.
 
-```python
+
 def fun(name):
     print(f"Hello {name}")
 
 cheer = fun  # Assigning 'fun' to 'cheer'
 cheer("Alice")  # Output: Hello Alice
 
-## Python Programming Concepts
-
-This repository provides an overview of object-oriented programming (OOP), file handling, advanced concepts, and more in Python.
 
 ## Table of Contents
 
@@ -158,7 +155,7 @@ This repository provides an overview of object-oriented programming (OOP), file 
 - **Abstraction**: Hiding the internal implementation details and exposing only the necessary features.
 
 #### Example:
-```python
+
 class Person:
     def __init__(self, name, age):
         self.name = name
