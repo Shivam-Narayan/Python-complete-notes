@@ -1,12 +1,12 @@
 # Python Object-Oriented and Core Concepts
 
-This reference document covers essential Python concepts, including classes, object orientation, error handling, file and JSON processing, copying semantics, advanced language features, and concurrency.
+This reference document covers essential Python topics with clear definitions, practical examples, and a professional structure.
 
 ---
 
 ## 1. Class
 
-A class is a blueprint for creating objects. It defines the data attributes and behaviors that the created objects will have.
+A class is a blueprint for creating objects. It defines the data attributes and behaviors that objects of that type will have.
 
 ### Syntax
 
@@ -22,13 +22,13 @@ class Car:
     pass
 ```
 
-A class groups related state and behavior so the same pattern can be reused across multiple objects.
+A class groups related state and behavior so it can be reused consistently.
 
 ---
 
 ## 2. Object
 
-An object is an instance of a class. It represents a concrete entity with state and behavior defined by the class.
+An object is an instance of a class. It represents a concrete entity with the state and behavior defined by the class.
 
 ### Example
 
@@ -46,13 +46,13 @@ print(person.name)
 print(person.greet())
 ```
 
-An object carries attributes and methods that operate on its state.
+Objects hold attributes and methods that operate on those attributes.
 
 ---
 
 ## 3. self
 
-In instance methods, `self` refers to the current object. It is the conventional name for the first parameter of an instance method.
+In instance methods, `self` is a reference to the current object. It is the conventional name for the first parameter of an instance method.
 
 ### Example
 
@@ -86,13 +86,13 @@ class Car:
 obj = Car()
 ```
 
-The constructor runs automatically at instantiation and prepares internal state.
+The constructor runs automatically at instantiation and sets up the object's initial state.
 
 ---
 
 ## 5. `__str__`
 
-The `__str__` method returns a human-readable string representation of an object. It is called by `print()` and `str()`.
+The `__str__` method returns a human-readable string representation of an object. It is used by `print()` and `str()`.
 
 ### Example
 
@@ -110,18 +110,18 @@ print(car)
 print(str(car))
 ```
 
-Without `__str__`, printing an object displays a generic memory address representation.
+Without `__str__`, printing an object shows a generic memory address representation.
 
 ---
 
 ## 6. Encapsulation
 
-Encapsulation binds data and methods together inside a class and hides internal state from outside access.
+Encapsulation bundles data and methods inside a class and hides internal state from outside access.
 
-### Purpose
+### Why it matters
 - Protects internal data from unintended modification
-- Exposes a controlled interface for access
-- Centralizes validation logic
+- Provides a controlled interface for access
+- Centralizes validation and business logic
 
 ### Example
 
@@ -141,7 +141,7 @@ employee.set_salary(50000)
 print(employee.get_salary())
 ```
 
-Private attributes are name-mangled to discourage direct access from outside the class.
+Private attributes are name-mangled by Python to discourage external access.
 
 ---
 
@@ -167,7 +167,10 @@ obj.sound()
 ```
 
 ### Inherited members
-A subclass inherits common attributes and methods from its parent class.
+A subclass inherits:
+- instance variables
+- methods
+- constructors (unless overridden)
 
 ```python
 class Employee:
@@ -195,7 +198,7 @@ developer.display()
 ## 8. Types of Inheritance
 
 ### 8.1 Single inheritance
-One child class inherits from one parent class.
+One subclass inherits from one parent class.
 
 ```python
 class Animal:
@@ -208,7 +211,7 @@ class Dog(Animal):
 ```
 
 ### 8.2 Multiple inheritance
-One child class inherits from more than one parent class.
+One subclass inherits from more than one parent class.
 
 ```python
 class Father:
@@ -242,7 +245,7 @@ class Son(Father):
 ```
 
 ### 8.4 Hierarchical inheritance
-Multiple child classes inherit from a single parent class.
+Multiple child classes inherit from the same parent class.
 
 ```python
 class Vehicle:
@@ -259,7 +262,7 @@ class Bike(Vehicle):
 ```
 
 ### 8.5 Hybrid inheritance
-A combination of two or more inheritance patterns.
+A combination of inheritance patterns.
 
 ```python
 class Grandfather:
@@ -279,7 +282,7 @@ class Child(Son, Daughter):
 ```
 
 ### IS-A relationship
-Inheritance expresses an "IS-A" relationship: a derived class is a specialized version of the base class.
+Inheritance represents an "IS-A" relationship: a derived class is a specialized version of its base class.
 
 Examples:
 - `Dog` IS-A `Animal`
@@ -329,7 +332,7 @@ for animal in (Dog(), Cat()):
 ```
 
 ### Operator overloading
-Python operators behave differently depending on operand types.
+Python operators behave differently depending on operand type.
 
 ```python
 print(10 + 20)
@@ -338,7 +341,7 @@ print([1, 2] + [3, 4])
 ```
 
 ### Overloading-like behavior
-Python does not support traditional compile-time method overloading, but variable arguments achieve similar flexibility.
+Python does not support traditional method overloading, but flexible argument lists provide similar behavior.
 
 ```python
 class Calculator:
@@ -354,10 +357,10 @@ print(calculator.add(10, 20, 30))
 
 ## 10. Abstraction
 
-Abstraction hides implementation details and exposes a clear interface.
+Abstraction hides implementation details and exposes a simple interface.
 
 ### Definition
-An abstract class defines required behavior while deferring implementation to subclasses.
+An abstract class defines required behavior while deferring the implementation to subclasses.
 
 ### Python support
 - `abc.ABC`
@@ -397,7 +400,7 @@ Exception handling lets a program detect and respond to runtime errors while con
 
 ### Structure
 - `try`: code that may raise an exception
-- `except`: handler for specific exceptions
+- `except`: handle a specific error
 - `finally`: cleanup code that always runs
 
 ### Example
