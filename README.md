@@ -1,203 +1,685 @@
-# Python Programming Concepts
+# Python Object-Oriented and Core Concepts
 
-This repository provides an overview of fundamental Python programming concepts, including data types, control structures, functions, object-oriented programming, file handling, and more.
-
-## Table of Contents
-
-1. [Introduction to Python](#introduction-to-python)
-2. [Variables and Data Types](#variables-and-data-types)
-3. [Operators](#operators)
-4. [Special Data Types](#special-data-types)
-5. [Control Structures](#control-structures)
-6. [Functions](#functions)
-7. [Object-Oriented Programming (OOP)](#object-oriented-programming-oop)
-8. [File Handling](#file-handling)
-9. [Advanced Concepts](#advanced-concepts)
+This reference document covers essential Python concepts, including classes, object orientation, error handling, file and JSON processing, copying semantics, advanced language features, and concurrency.
 
 ---
 
-## Introduction to Python
+## 1. Class
 
-- **Python** is a high-level, interpreted programming language.
-- **Features**:
-  - Simple and easy to learn.
-  - Cross-platform and platform-independent.
-  - Extensible and dynamically typed.
-  - Free and downloadable.
+A class is a blueprint for creating objects. It defines the data attributes and behaviors that the created objects will have.
 
----
+### Syntax
 
-## Variables and Data Types
+```python
+class ClassName:
+    pass
+```
 
-### Variables
-- Used to store data or information.
-- Examples:
-  - Integer: `x = 10`
-  - Float: `x = 10.00`
-  - String: `name = 'shivam'`
+### Example
 
-### Data Types
-- Specify the type of data.
-- Common types:
-  - `int`
-  - `float`
-  - `bool` (Boolean: `True/False`)
-  - `str` (String)
+```python
+class Car:
+    pass
+```
+
+A class groups related state and behavior so the same pattern can be reused across multiple objects.
 
 ---
 
-## Operators
+## 2. Object
 
-1. **Arithmetic Operators**: `+, -, *, %, /, //`
-2. **Assignment Operators**: `=, +=, -=, *=, %=, /=, //=`
-3. **Relational Operators**: `==, !=, <, <=, >, >=`
-4. **Logical Operators**: `and, or, not`
-5. **Membership Operators**: `in, not in`
-6. **Identity Operators**: `is, is not`
+An object is an instance of a class. It represents a concrete entity with state and behavior defined by the class.
 
----
+### Example
 
-## Special Data Types
-
-### List
-- Ordered, mutable collection.
-- Supports indexing, slicing, and duplicate values.
-
-### Tuple
-- Ordered, immutable collection.
-- Supports indexing, slicing, and duplicate values.
-
-### Set
-- Unordered, mutable collection.
-- Does not allow duplicate values.
-
-### Dictionary
-- Ordered, mutable collection of key-value pairs.
-- Keys must be unique.
-
----
-
-## Control Structures
-
-- **if Statement**
-- **if-else Statement**
-- **if-elif-else Chain**
-- **Nested if Statements**
-- **Ternary Operator**: `status = "Adult" if age >= 18 else "Minor"`
-
----
-
-## Functions
-
-### User-Defined Functions
-- Defined using the `def` keyword.
-- Example:
-  ```python
-  def greet(name):
-      return f"Hello, {name}!"
-
-## Table of Contents
-
-1. [Built-in Functions](#built-in-functions)
-2. [Function Aliasing](#function-aliasing)
-3. [Object-Oriented Programming (OOP)](#object-oriented-programming-oop)
-4. [File Handling](#file-handling)
-5. [Advanced Concepts](#advanced-concepts)
-6. [License](#license)
-
----
-
-## Built-in Functions
-
-Python comes with several built-in functions that are always available. Some commonly used ones include:
-
-- `print()`: Outputs data to the console.
-- `len()`: Returns the number of items in an object.
-- `type()`: Returns the type of an object.
-- `input()`: Takes input from the user.
-- `range()`: Generates a sequence of numbers.
-
----
-
-## Function Aliasing
-
-Assigning another name to a function is called **function aliasing**. This allows you to use different names for the same function.
-
-
-def fun(name):
-    print(f"Hello {name}")
-
-cheer = fun  # Assigning 'fun' to 'cheer'
-cheer("Alice")  # Output: Hello Alice
-
-
-## Table of Contents
-
-1. [Object-Oriented Programming (OOP)](#object-oriented-programming-oop)
-2. [File Handling](#file-handling)
-3. [Advanced Concepts](#advanced-concepts)
-4. [License](#license)
-
----
-
-## Object-Oriented Programming (OOP)
-
-### Classes and Objects
-
-- **Class**: A blueprint for creating objects.
-- **Object**: An instance of a class.
-
-### Key Concepts
-
-- **Encapsulation**: Binding data and methods into a single unit (class).
-- **Inheritance**: Reusability of code. A class can inherit the attributes and methods of another class.
-- **Polymorphism**: Different forms of methods. Methods in a class can behave differently based on the object.
-- **Abstraction**: Hiding the internal implementation details and exposing only the necessary features.
-
-#### Example:
-
+```python
 class Person:
     def __init__(self, name, age):
         self.name = name
         self.age = age
 
     def greet(self):
-        return f"Hello, my name is {self.name} and I am {self.age} years old."
+        return f"Hello, my name is {self.name}."
 
-# Python Programming Concepts
+person = Person("Alice", 30)
+print(person.name)
+print(person.greet())
+```
 
-This repository provides an overview of file handling, advanced Python concepts, and special functions, including decorators, iterators, generators, and functional programming techniques.
-
-## Table of Contents
-
-1. [File Handling](#file-handling)
-2. [Advanced Concepts](#advanced-concepts)
-   - [Decorators](#decorators)
-   - [Iterators and Generators](#iterators-and-generators)
-   - [Special Functions](#special-functions)
-3. [License](#license)
+An object carries attributes and methods that operate on its state.
 
 ---
 
-## File Handling
+## 3. self
 
-### Modes:
+In instance methods, `self` refers to the current object. It is the conventional name for the first parameter of an instance method.
 
-- `'r'`: Read
-- `'w'`: Write
-- `'a'`: Append
-- `'x'`: Create
+### Example
 
-### Common Methods:
-
-- `open()`: Opens a file.
-- `read()`: Reads the content of a file.
-- `write()`: Writes to a file.
-- `close()`: Closes a file after operations.
-
-#### Example:
 ```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+    def display(self):
+        print(self.name)
+
+obj = Student("Shivam")
+obj.display()
+```
+
+Python automatically passes the current object as the first argument when calling an instance method.
+
+---
+
+## 4. Constructor (`__init__`)
+
+The constructor initializes a new object when it is created. In Python, this is implemented with the `__init__` method.
+
+### Example
+
+```python
+class Car:
+    def __init__(self):
+        print("Car created")
+
+obj = Car()
+```
+
+The constructor runs automatically at instantiation and prepares internal state.
+
+---
+
+## 5. `__str__`
+
+The `__str__` method returns a human-readable string representation of an object. It is called by `print()` and `str()`.
+
+### Example
+
+```python
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def __str__(self):
+        return f"{self.brand} {self.model}"
+
+car = Car("Toyota", "Corolla")
+print(car)
+print(str(car))
+```
+
+Without `__str__`, printing an object displays a generic memory address representation.
+
+---
+
+## 6. Encapsulation
+
+Encapsulation binds data and methods together inside a class and hides internal state from outside access.
+
+### Purpose
+- Protects internal data from unintended modification
+- Exposes a controlled interface for access
+- Centralizes validation logic
+
+### Example
+
+```python
+class Employee:
+    def __init__(self):
+        self.__salary = 0
+
+    def set_salary(self, salary):
+        self.__salary = salary
+
+    def get_salary(self):
+        return self.__salary
+
+employee = Employee()
+employee.set_salary(50000)
+print(employee.get_salary())
+```
+
+Private attributes are name-mangled to discourage direct access from outside the class.
+
+---
+
+## 7. Inheritance
+
+Inheritance allows a class to derive properties and behaviors from another class.
+
+### Definition
+A child class inherits from a parent class and can reuse or extend its implementation.
+
+### Example
+
+```python
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+class Dog(Animal):
+    pass
+
+obj = Dog()
+obj.sound()
+```
+
+### Inherited members
+A subclass inherits common attributes and methods from its parent class.
+
+```python
+class Employee:
+    def __init__(self):
+        self.company = "Google"
+
+    def display(self):
+        print("Welcome")
+
+class Developer(Employee):
+    pass
+
+developer = Developer()
+print(developer.company)
+developer.display()
+```
+
+### Benefits
+- Reduces duplicate code
+- Organizes related behavior
+- Enables polymorphic design
+
+---
+
+## 8. Types of Inheritance
+
+### 8.1 Single inheritance
+One child class inherits from one parent class.
+
+```python
+class Animal:
+    def eat(self):
+        print("Eating")
+
+class Dog(Animal):
+    def bark(self):
+        print("Bark")
+```
+
+### 8.2 Multiple inheritance
+One child class inherits from more than one parent class.
+
+```python
+class Father:
+    def money(self):
+        print("Father gives money")
+
+class Mother:
+    def caring(self):
+        print("Mother is caring")
+
+class Child(Father, Mother):
+    def study(self):
+        print("Child studies")
+```
+
+### 8.3 Multilevel inheritance
+A class extends another class, which itself extends a third class.
+
+```python
+class Grandfather:
+    def property(self):
+        print("Family property")
+
+class Father(Grandfather):
+    def business(self):
+        print("Family business")
+
+class Son(Father):
+    def job(self):
+        print("Son's job")
+```
+
+### 8.4 Hierarchical inheritance
+Multiple child classes inherit from a single parent class.
+
+```python
+class Vehicle:
+    def start(self):
+        print("Starting vehicle")
+
+class Car(Vehicle):
+    def airbags(self):
+        print("Car airbags")
+
+class Bike(Vehicle):
+    def kick(self):
+        print("Bike kick start")
+```
+
+### 8.5 Hybrid inheritance
+A combination of two or more inheritance patterns.
+
+```python
+class Grandfather:
+    pass
+
+class Father(Grandfather):
+    pass
+
+class Son(Father):
+    pass
+
+class Daughter(Father):
+    pass
+
+class Child(Son, Daughter):
+    pass
+```
+
+### IS-A relationship
+Inheritance expresses an "IS-A" relationship: a derived class is a specialized version of the base class.
+
+Examples:
+- `Dog` IS-A `Animal`
+- `Car` IS-A `Vehicle`
+- `Developer` IS-A `Employee`
+- `Student` IS-A `Person`
+
+---
+
+## 9. Polymorphism
+
+Polymorphism allows the same interface to have different implementations.
+
+### Method overriding
+A subclass provides a new implementation for a method inherited from the parent class.
+
+```python
+class Animal:
+    def sound(self):
+        print("Animal sound")
+
+class Dog(Animal):
+    def sound(self):
+        print("Bark")
+
+Dog().sound()
+```
+
+### Polymorphic dispatch
+Different classes implement the same method name.
+
+```python
+class Animal:
+    def speak(self):
+        raise NotImplementedError
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+for animal in (Dog(), Cat()):
+    print(animal.speak())
+```
+
+### Operator overloading
+Python operators behave differently depending on operand types.
+
+```python
+print(10 + 20)
+print("Hello " + "World")
+print([1, 2] + [3, 4])
+```
+
+### Overloading-like behavior
+Python does not support traditional compile-time method overloading, but variable arguments achieve similar flexibility.
+
+```python
+class Calculator:
+    def add(self, *args):
+        return sum(args)
+
+calculator = Calculator()
+print(calculator.add(10, 20))
+print(calculator.add(10, 20, 30))
+```
+
+---
+
+## 10. Abstraction
+
+Abstraction hides implementation details and exposes a clear interface.
+
+### Definition
+An abstract class defines required behavior while deferring implementation to subclasses.
+
+### Python support
+- `abc.ABC`
+- `@abstractmethod`
+
+### Example
+
+```python
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def make_sound(self):
+        pass
+
+    def sleep(self):
+        print("Sleeping...")
+
+class Dog(Animal):
+    def make_sound(self):
+        print("Woof!")
+
+class Cat(Animal):
+    def make_sound(self):
+        print("Meow!")
+
+Dog().make_sound()
+Cat().make_sound()
+Dog().sleep()
+```
+
+---
+
+## 11. Exception Handling
+
+Exception handling lets a program detect and respond to runtime errors while continuing execution gracefully.
+
+### Structure
+- `try`: code that may raise an exception
+- `except`: handler for specific exceptions
+- `finally`: cleanup code that always runs
+
+### Example
+
+```python
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+    print(result)
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+except ValueError:
+    print("Please enter a valid number.")
+finally:
+    print("This always runs.")
+```
+
+### Common exceptions
+- `ZeroDivisionError`
+- `ValueError`
+- `TypeError`
+- `IndexError`
+- `KeyError`
+- `NameError`
+- `FileNotFoundError`
+- `ImportError`
+- `AttributeError`
+- `ModuleNotFoundError`
+
+---
+
+## 12. File Handling
+
+File handling is the process of reading from and writing to files.
+
+### Modes
+- `r`: read only
+- `w`: write only, overwrites existing file
+- `a`: append only
+- `r+`: read and write
+- `w+`: write and read, overwrites existing file
+- `a+`: append and read
+- `x`: create new file, fails if file exists
+- `rb`, `wb`: binary read/write
+
+### Core functions
+- `open(filename, mode)`
+- `file.close()`
+- `file.read()`
+- `file.readline()`
+- `file.readlines()`
+- `file.write(data)`
+- `file.writelines(lines)`
+
+### Example: write and read
+
+```python
+with open("example.txt", "w") as file:
+    file.write("Hello, World!\n")
+
 with open("example.txt", "r") as file:
     content = file.read()
     print(content)
+```
 
+The `with` statement ensures the file is closed automatically.
+
+---
+
+## 13. JSON
+
+JSON is a text-based format for structured data. Python uses the built-in `json` module to serialize and deserialize JSON.
+
+### Example: write JSON
+
+```python
+import json
+
+data = {"id": 1, "message": "Hello"}
+with open("emp.json", "w") as file:
+    json.dump(data, file)
+```
+
+### Example: read JSON
+
+```python
+import json
+
+with open("emp.json", "r") as file:
+    result = json.load(file)
+    print(result)
+```
+
+### Example: string conversion
+
+```python
+import json
+
+data = [30, 40, 50]
+json_text = json.dumps(data)
+print(json_text)
+print(json.loads(json_text))
+```
+
+---
+
+## 14. Copying Objects
+
+### Shallow copy
+A shallow copy creates a new object but shares nested references with the original.
+
+```python
+import copy
+
+a = [[1, 2], [3, 4]]
+b = copy.copy(a)
+b[0][0] = 100
+print(a)
+print(b)
+```
+
+### Deep copy
+A deep copy creates an independent copy of the object and all nested objects.
+
+```python
+import copy
+
+a = [[1, 2], [3, 4]]
+b = copy.deepcopy(a)
+b[0][0] = 100
+print(a)
+print(b)
+```
+
+### Comparison
+- Shallow copy copies the outer object and shares nested objects
+- Deep copy duplicates nested objects recursively
+- Shallow copy is faster and uses less memory
+- Deep copy is safer when modifying nested structures
+
+---
+
+## 15. Advanced Concepts
+
+### Decorators
+A decorator is a callable that modifies or extends another callable without changing its source code.
+
+```python
+def decorator(func):
+    def wrapper():
+        print("Transaction initiated")
+        func()
+        print("Transaction completed")
+    return wrapper
+
+@decorator
+def transaction():
+    print("Executing all transaction steps.")
+
+transaction()
+```
+
+### Iterators
+An iterator provides sequential access to elements in a collection.
+
+```python
+mytuple = ("Apple", "Banana", "Cherry")
+obj = iter(mytuple)
+print(next(obj))
+print(next(obj))
+print(next(obj))
+```
+
+### Generators
+Generators yield values lazily and save memory for large sequences.
+
+```python
+def numbers():
+    yield 1
+    yield 2
+    yield 3
+
+for value in numbers():
+    print(value)
+```
+
+### Lambda functions
+A lambda is a small anonymous function defined with `lambda`.
+
+```python
+square = lambda x: x * x
+print(square(5))
+
+add = lambda a, b: a + b
+print(add(10, 20))
+```
+
+### `map`, `filter`, and `reduce`
+
+```python
+numbers = [1, 2, 3, 4]
+print(list(map(lambda x: x * x, numbers)))
+print(list(filter(lambda x: x % 2 == 0, numbers)))
+```
+
+```python
+from functools import reduce
+numbers = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + y, numbers)
+print(result)
+```
+
+---
+
+## 16. Concurrency
+
+### Multithreading
+Multithreading runs multiple threads within a single process. It is best suited for I/O-bound workloads.
+
+```python
+import threading
+import time
+
+def walk_dog(name):
+    time.sleep(8)
+    print(f"You finished walking {name}")
+
+def take_out_trash():
+    time.sleep(2)
+    print("You took out the trash")
+
+def get_mail():
+    time.sleep(4)
+    print("You got the mail")
+
+chore1 = threading.Thread(target=walk_dog, args=("Scooby",))
+chore2 = threading.Thread(target=take_out_trash)
+chore3 = threading.Thread(target=get_mail)
+
+chore1.start()
+chore2.start()
+chore3.start()
+
+chore1.join()
+chore2.join()
+chore3.join()
+print("All chores are complete!")
+```
+
+### Multiprocessing
+Multiprocessing runs multiple processes in parallel and is suited for CPU-bound tasks.
+
+```python
+from multiprocessing import Process
+import time
+
+def square_numbers():
+    for i in range(5):
+        print(i * i)
+        time.sleep(1)
+
+if __name__ == "__main__":
+    p1 = Process(target=square_numbers)
+    p2 = Process(target=square_numbers)
+    p1.start()
+    p2.start()
+    p1.join()
+    p2.join()
+    print("Process completed.")
+```
+
+### Global Interpreter Lock (GIL)
+The GIL allows only one thread to execute Python bytecode at a time in CPython. It limits CPU-bound multithreaded programs but does not affect multiprocessing.
+
+### Comparison
+- Multithreading: uses threads, shared memory, efficient for I/O-bound operations
+- Multiprocessing: uses processes, separate memory spaces, ideal for CPU-bound tasks
+- Multithreading is limited by the GIL in CPython
+- Multiprocessing bypasses the GIL by using separate interpreters
+
+---
+
+## 17. Summary
+
+This document provides a strong foundation for Python developers. It combines object-oriented principles, error handling, file and data management, data copying, advanced language constructs, and concurrency models into a single professional reference.
